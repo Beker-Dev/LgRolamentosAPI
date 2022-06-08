@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import django_heroku
+import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'whitenoise.runserver_nostatic',
     'corsheaders'
 ]
 
@@ -52,7 +55,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ROOT_URLCONF = 'LgRolamentos.urls'
 
@@ -80,15 +86,17 @@ WSGI_APPLICATION = 'LgRolamentos.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd32i8dst1rkfgp',
-        'PORT': '5432',
-        'USER': 'nsqocxqpwccrej',
-        'PASSWORD': '910b0ddedf01625a12b0f3dc3a21974c7e9c92fdb95fef503a3bf38056e4ea94',
-        'HOST': 'ec2-3-224-164-189.compute-1.amazonaws.com'
+        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        # 'NAME': 'd9m5oufb2sdm9d',
+        # 'PORT': '5432',
+        # 'USER': 'fyfkebnnrerlpa',
+        # 'PASSWORD': 'dae2c7c9d98577790c366d95ebfd180eac58cf72f184d69faad56913623e7f38',
+        # 'HOST': 'ec2-54-147-33-38.compute-1.amazonaws.com'
     }
 }
 
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -125,7 +133,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 

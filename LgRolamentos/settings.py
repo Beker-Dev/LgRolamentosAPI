@@ -81,11 +81,11 @@ WSGI_APPLICATION = 'LgRolamentos.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'db_lg_rolamentos',
+        'NAME': 'd32i8dst1rkfgp',
         'PORT': '5432',
-        'USER': 'postgres',
-        'PASSWORD': 'admin',
-        'HOST': 'localhost'
+        'USER': 'nsqocxqpwccrej',
+        'PASSWORD': '910b0ddedf01625a12b0f3dc3a21974c7e9c92fdb95fef503a3bf38056e4ea94',
+        'HOST': 'ec2-3-224-164-189.compute-1.amazonaws.com'
     }
 }
 

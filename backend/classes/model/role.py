@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django import forms
 
 
 class Role(models.Model):
@@ -19,3 +20,9 @@ class Role(models.Model):
 
     def __repr__(self):
         return f'{self.name}'
+
+
+class RoleForm(forms.ModelForm):
+    class Meta:
+        model = Role
+        fields = ['name', 'is_active']

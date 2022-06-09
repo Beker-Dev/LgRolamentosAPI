@@ -8,7 +8,7 @@ import smtplib
 from email.message import EmailMessage
 from backend.utils import casting
 from datetime import datetime, timedelta
-from backend.classes.model.role import Role
+from backend.classes.model.role import Role, RoleForm
 from django.utils import timezone
 
 
@@ -79,6 +79,18 @@ class ManagerViews:
                     'Roles': response
                 }
             )
+
+    @staticmethod
+    def add_role(request):
+        if request.method == 'POST':
+            role = RoleForm(request.POST)
+
+            if role.is_valid():
+                role.name = role.name.lower()
+                role.save()
+                return JsonResponse({'status': 200, 'msg': f'Role [{role.name}] registered!'})
+            else:
+                return JsonResponse({'status': 400, 'msg': 'Invalid Role'})
 
     @staticmethod
     def add_manager(request):

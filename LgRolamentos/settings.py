@@ -84,20 +84,20 @@ WSGI_APPLICATION = 'LgRolamentos.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# DATABASES = {
-# #     'default': {
-# #         # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-# #         # 'NAME': 'd9m5oufb2sdm9d',
-# #         # 'PORT': '5432',
-# #         # 'USER': 'fyfkebnnrerlpa',
-# #         # 'PASSWORD': 'dae2c7c9d98577790c366d95ebfd180eac58cf72f184d69faad56913623e7f38',
-# #         # 'HOST': 'ec2-54-147-33-38.compute-1.amazonaws.com'
-# #     }
-# # }
-
 DATABASES = {
-    'default': dj_database_url.config()
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'db_lg_rolamentos',
+        'PORT': '5432',
+        'USER': 'postgres',
+        'PASSWORD': 'admin',
+        'HOST': 'localhost'
+    }
 }
+
+# DATABASES = {
+#     'default': dj_database_url.config()
+# }
 
 
 # Password validation

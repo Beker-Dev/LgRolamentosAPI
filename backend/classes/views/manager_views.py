@@ -86,9 +86,8 @@ class ManagerViews:
             role = RoleForm(request.POST)
 
             if role.is_valid():
-                role.name = role.name.lower()
                 role.save()
-                return JsonResponse({'status': 200, 'msg': f'Role [{role.name}] registered!'})
+                return JsonResponse({'status': 200, 'msg': f'Role registered!'})
             else:
                 return JsonResponse({'status': 400, 'msg': 'Invalid Role'})
 

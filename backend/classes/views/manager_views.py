@@ -96,6 +96,7 @@ class ManagerViews:
         if request.method == 'POST':
             role = get_object_or_404(Role, id=id)
             role.is_active = False
+            role.updated_at = timezone.now()
             role.save()
             return JsonResponse({'status': 200, 'msg': 'Role is not active anymore'})
 

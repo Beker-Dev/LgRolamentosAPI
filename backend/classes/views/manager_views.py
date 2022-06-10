@@ -92,6 +92,14 @@ class ManagerViews:
                 return JsonResponse({'status': 400, 'msg': 'Invalid Role'})
 
     @staticmethod
+    def disable_role(request, id):
+        if request.method == 'POST':
+            role = get_object_or_404(Role, id=id)
+            role.is_active = False
+            role.save()
+            return JsonResponse({'status': 200, 'msg': 'Role is not active anymore'})
+
+    @staticmethod
     def add_manager(request):
         if request.method == 'POST':
             post = request.POST.copy()

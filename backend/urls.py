@@ -26,5 +26,6 @@ urlpatterns = [
  path('demit-employee/<int:id>/', ManagerViews.demit_employee),
  path('list-roles/', ManagerViews.list_roles),
  path('add-role/', ManagerViews.add_role),
+ path('disble-role/<int:id>/', ManagerViews.disable_role),
  path('delete-merit/<int:id>/', MeritViews.delete_merit)
 ]

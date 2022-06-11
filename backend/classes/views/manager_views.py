@@ -19,7 +19,7 @@ class ManagerViews:
             employee = get_object_or_404(Employee, id=id)
 
             post = request.POST.copy()
-            print(post)
+            post['age'] = employee.age if not post.get('age') else post.get('age')
             post['sex'] = request.POST.get('sex').lower()
             request.POST = post
 
@@ -35,7 +35,7 @@ class ManagerViews:
                     'status': 200
                 })
             return JsonResponse({
-                'msg': 'ERROR: Could not edit' + str(employee_form),
+                'msg': 'ERROR: Could not edit',
                 'status': 400
             })
 

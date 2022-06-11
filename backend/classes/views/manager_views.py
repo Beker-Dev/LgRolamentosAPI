@@ -70,35 +70,35 @@ class ManagerViews:
                 'Employees': response
             })
 
-    @staticmethod
-    def list_roles(request):
-        if request.method == 'GET':
-            response = [role.to_json() for role in Role.objects.all().filter(is_active=True)]
-            return JsonResponse(
-                {
-                    'Roles': response
-                }
-            )
-
-    @staticmethod
-    def add_role(request):
-        if request.method == 'POST':
-            role = RoleForm(request.POST)
-
-            if role.is_valid():
-                role.save()
-                return JsonResponse({'status': 200, 'msg': f'Role registered!'})
-            else:
-                return JsonResponse({'status': 400, 'msg': 'Invalid Role'})
-
-    @staticmethod
-    def disable_role(request, id):
-        if request.method == 'POST':
-            role = get_object_or_404(Role, id=id)
-            role.is_active = False
-            role.updated_at = timezone.now()
-            role.save()
-            return JsonResponse({'status': 200, 'msg': 'Role is not active anymore'})
+    # @staticmethod
+    # def list_roles(request):
+    #     if request.method == 'GET':
+    #         response = [role.to_json() for role in Role.objects.all().filter(is_active=True)]
+    #         return JsonResponse(
+    #             {
+    #                 'Roles': response
+    #             }
+    #         )
+    #
+    # @staticmethod
+    # def add_role(request):
+    #     if request.method == 'POST':
+    #         role = RoleForm(request.POST)
+    #
+    #         if role.is_valid():
+    #             role.save()
+    #             return JsonResponse({'status': 200, 'msg': f'Role registered!'})
+    #         else:
+    #             return JsonResponse({'status': 400, 'msg': 'Invalid Role'})
+    #
+    # @staticmethod
+    # def disable_role(request, id):
+    #     if request.method == 'POST':
+    #         role = get_object_or_404(Role, id=id)
+    #         role.is_active = False
+    #         role.updated_at = timezone.now()
+    #         role.save()
+    #         return JsonResponse({'status': 200, 'msg': 'Role is not active anymore'})
 
     @staticmethod
     def add_manager(request):

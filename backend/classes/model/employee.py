@@ -12,7 +12,7 @@ class Employee(models.Model):
     rg = models.CharField(max_length=12, default=None, unique=True, null=True)
     pis = models.CharField(max_length=12, default=None, unique=True, null=True)
     is_active = models.BooleanField(default=True, null=True)
-    role = models.ForeignKey(Role, on_delete=models.CASCADE, null=True)
+    role = models.CharField(max_length=30, default=None, null=True)
     nationality = models.CharField(max_length=50, default=None, null=True)
     salary = models.FloatField(default=None, null=True)
     phone = models.CharField(max_length=20, default=None, unique=True, null=True)
@@ -23,7 +23,7 @@ class Employee(models.Model):
 
     def __repr__(self):
         return f'{self.name} | {self.age} | {self.email} | {self.address} | {self.rg} | {self.pis} | {self.is_active} | ' \
-               f'{self.role.__repr__()} | {self.nationality} | ${self.salary} | {self.phone} | {self.sex} | {self.created_at} | ' \
+               f'{self.role} | {self.nationality} | ${self.salary} | {self.phone} | {self.sex} | {self.created_at} | ' \
                f'{self.hired_at} | {self.updated_at}'
 
     def json_object(self):
@@ -36,7 +36,7 @@ class Employee(models.Model):
             'rg': self.rg,
             'pis': self.pis,
             'is_active': self.is_active,
-            'role': self.role.id,
+            'role': self.role,
             'nationality': self.nationality,
             'salary': self.salary,
             'phone': self.phone,

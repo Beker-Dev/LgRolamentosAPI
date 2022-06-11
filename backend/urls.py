@@ -24,8 +24,8 @@ urlpatterns = [
  path('get-dollar-price', get_dollar_price),
  path('demit-manager/<int:id>/', ManagerViews.demit_manager),
  path('demit-employee/<int:id>/', ManagerViews.demit_employee),
- path('list-roles/', ManagerViews.list_roles),
- path('add-role/', ManagerViews.add_role),
- path('disable-role/<int:id>/', ManagerViews.disable_role),
+ # path('list-roles/', ManagerViews.list_roles),
+ # path('add-role/', ManagerViews.add_role),
+ # path('disable-role/<int:id>/', ManagerViews.disable_role),
  path('delete-merit/<int:id>/', MeritViews.delete_merit)
 ]

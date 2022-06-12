@@ -68,11 +68,12 @@ class PresenceControlViews:
                 )
 
     @staticmethod
-    def post_presence_control(request, id):
+    def post_presence_control(request):
         if request.method == 'POST':  # everyday set presence as true for new dates for all employees
-            presence_control = get_object_or_404(PresenceControl, id=id)
+            presence_control = get_object_or_404(PresenceControl,
+                                                 employee=request.POST.get('employee'),
+                                                 date=request.POST.get('date'))
             presence_control_form = PresenceControlForm(request.POST or None, instance=presence_control)
-
             if presence_control_form.is_valid():
                 presence_control_form.save()
                 return JsonResponse({'status': 200, 'msg': 'ok'})

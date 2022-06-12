@@ -18,5 +18,5 @@ class PresenceControlForm(forms.ModelForm):
     class Meta:
         model = PresenceControl
         fields = [
-            'manager', 'employee', 'presence_morning', 'presence_afternoon', 'payment', 'note'
+            'manager', 'employee', 'presence_morning', 'presence_afternoon', 'payment', 'note', 'date'
         ]

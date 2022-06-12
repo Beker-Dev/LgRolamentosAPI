@@ -10,7 +10,7 @@ urlpatterns = [
  path('list/', ManagerViews.list_employees),
  path('edit/<int:id>/', ManagerViews.edit_employee),
  path('get-presences/<int:employee_id>/<str:start_date>/<str:end_date>/', PresenceControlViews.get_presence_control),
- path('post-presences/<int:id>/', PresenceControlViews.post_presence_control),
+ path('post-presences/', PresenceControlViews.post_presence_control),
  path('add-advertence/', AdvertenceViews.add_advertence),
  path('list-advertence/', AdvertenceViews.list_advertence),
  path('edit-advertence/<int:id>/', AdvertenceViews.edit_advertence),

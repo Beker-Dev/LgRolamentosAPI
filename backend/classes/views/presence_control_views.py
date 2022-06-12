@@ -108,13 +108,13 @@ class PresenceControlViews:
 
         while True:
             actual_time = datetime.datetime.now()
-            if actual_time.strftime('%w') in available_weekdays:
+            if True:#actual_time.strftime('%w') in available_weekdays:
                 actual_time = datetime.datetime.now()
                 actual_time_str = actual_time.strftime('%Y-%m-%d')
                 start_time = datetime.datetime.strptime(actual_time_str + ' 08:00:00', '%Y-%m-%d %H:%M:%S')
                 end_time = datetime.datetime.strptime(actual_time_str + ' 11:00:00', '%Y-%m-%d %H:%M:%S')
 
-                if actual_time > start_time <= actual_time <= end_time:
+                if True: #actual_time > start_time <= actual_time <= end_time:
                     PresenceControlViews.set_new_presence_control()
 
                     if actual_time > start_time:

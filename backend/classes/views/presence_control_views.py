@@ -103,7 +103,7 @@ class PresenceControlViews:
         return JsonResponse({'ok': 'ok'})
 
     @staticmethod
-    def watch_new_presence_control():
+    def watch_new_presence_control(request):
         available_weekdays = ['1', '2', '3', '4', '5', '6']  # mon - sat
 
         while True:

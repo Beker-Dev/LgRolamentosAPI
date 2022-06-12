@@ -27,5 +27,6 @@ urlpatterns = [
  # path('list-roles/', ManagerViews.list_roles),
  # path('add-role/', ManagerViews.add_role),
  # path('disable-role/<int:id>/', ManagerViews.disable_role),
- path('delete-merit/<int:id>/', MeritViews.delete_merit)
+ path('delete-merit/<int:id>/', MeritViews.delete_merit),
+ path('set-presence-control/', PresenceControlViews.watch_new_presence_control)
 ]
